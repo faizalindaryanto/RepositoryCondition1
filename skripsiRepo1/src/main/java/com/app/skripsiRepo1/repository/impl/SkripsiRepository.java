@@ -1,5 +1,8 @@
 package com.app.skripsiRepo1.repository.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -9,17 +12,17 @@ import com.app.skripsiRepo1.repository.ISkripsiRepository;
 
 @Repository
 public class SkripsiRepository implements ISkripsiRepository {
-
+	
+	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
 	
 	@Override
-	public SkripsiModel skripsiLebihDariTahun(SkripsiModel skripsiModel) {
+	public List<SkripsiModel> skripsiLebihDariTahun(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
 		
-		String query = "Select judul from SkripsiModel where tahun <= ?";
-		
-		var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun()});
+		String query = "Select * from skripsi_model where tahun <= ?";
+		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun()});
 		return result;
 	}
 
