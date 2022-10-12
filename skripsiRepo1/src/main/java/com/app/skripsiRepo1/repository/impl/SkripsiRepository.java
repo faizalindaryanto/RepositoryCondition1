@@ -21,42 +21,42 @@ public class SkripsiRepository implements ISkripsiRepository {
 	public List<SkripsiModel> skripsiLebihDariTahun(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
 		
-		String query = "Select * from skripsi_model where tahun <= ?";
+		String query = "Select judul from skripsi_model where tahun <= ?";
 		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun()});
 		return result;
 	}
 
 	@Override
-	public SkripsiModel skripsiMengandungKata(SkripsiModel skripsiModel) {
+	public List<SkripsiModel> skripsiMengandungKata(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from SkripsiModel where judul like '%?%'";
+		String query = "Select judul from skripsi_model where judul like '%?%'";
 		
-		var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getJudul()});
+		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getJudul()});
 		return result;
 	}
 
 	@Override
-	public SkripsiModel skripsiTahunDanNilai(SkripsiModel skripsiModel) {
+	public List<SkripsiModel> skripsiTahunDanNilai(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from SkripsiModel where tahun == ? and nilai == ?";
+		String query = "Select judul from skripsi_model where tahun = ? and nilai = ?";
 		
-		var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun(), skripsiModel.getNilai()});
+		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun(), skripsiModel.getNilai()});
 		return result;
 	}
 
 	@Override
-	public SkripsiModel skripsiKecualiTahun(SkripsiModel skripsiModel) {
+	public List<SkripsiModel> skripsiKecualiTahun(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from SkripsiModel where tahun != ?";
-		var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun()});
+		String query = "Select judul from skripsi_model where tahun != ?";
+		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun()});
 		return result;
 	}
 
 	@Override
-	public SkripsiModel skripsiSelain(SkripsiModel skripsiModel) {
+	public List<SkripsiModel> skripsiSelain(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from SkripsiModel where judul not like '?%' order by tahun desc";
-		var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getJudul()});
+		String query = "Select judul from skripsi_model where judul not like ''?'%' order by tahun desc";
+		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getJudul()});
 		return result;
 	}
 

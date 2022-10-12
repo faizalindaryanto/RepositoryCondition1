@@ -22,4 +22,32 @@ public class SkripsiService implements ISkripsiService {
 		return result;
 	}
 
+	@Override
+	public List<SkripsiModel> skripsiMengandungKata(SkripsiModel skripsiModel) {
+		// TODO Auto-generated method stub
+		var result = skripsiRepository.skripsiMengandungKata(skripsiModel);
+		return result;
+	}
+
+	@Override
+	public List<SkripsiModel> skripsiTahunDanNilai(SkripsiModel skripsiModel) {
+		// TODO Auto-generated method stub
+		var result = skripsiRepository.skripsiTahunDanNilai(skripsiModel);
+		return result;
+	}
+
+	@Override
+	public List<SkripsiModel> skripsiKecualiTahun(SkripsiModel skripsiModel) {
+		// TODO Auto-generated method stub
+		var result = skripsiRepository.skripsiKecualiTahun(skripsiModel);
+		return result;
+	}
+
+	@Override
+	public List<SkripsiModel> skripsiSelain(SkripsiModel skripsiModel) {
+		// TODO Auto-generated method stub
+		var result = skripsiRepository.skripsiSelain(skripsiModel);
+		return result;
+	}
+
 }

@@ -6,8 +6,8 @@ import com.app.skripsiRepo1.model.SkripsiModel;
 
 public interface ISkripsiRepository {
 	public List<SkripsiModel> skripsiLebihDariTahun(SkripsiModel skripsiModel);
-	public SkripsiModel skripsiMengandungKata(SkripsiModel skripsiModel);
-	public SkripsiModel skripsiTahunDanNilai(SkripsiModel skripsiModel);
-	public SkripsiModel skripsiKecualiTahun(SkripsiModel skripsiModel);
-	public SkripsiModel skripsiSelain(SkripsiModel skripsiModel);
+	public List<SkripsiModel> skripsiMengandungKata(SkripsiModel skripsiModel);
+	public List<SkripsiModel> skripsiTahunDanNilai(SkripsiModel skripsiModel);
+	public List<SkripsiModel> skripsiKecualiTahun(SkripsiModel skripsiModel);
+	public List<SkripsiModel> skripsiSelain(SkripsiModel skripsiModel);
 }

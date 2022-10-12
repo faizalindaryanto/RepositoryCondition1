@@ -23,9 +23,29 @@ public class SkripsiController {
 		return "/beranda";
 	}
 	
-	@GetMapping("/getall")
-	public List<SkripsiModel> getAll(@RequestBody SkripsiModel skripsiModel){
+	@GetMapping("/get1")
+	public List<SkripsiModel> get1(@RequestBody SkripsiModel skripsiModel){
 		var result = skripsiService.skripsiLebihDariTahun(skripsiModel);
+		return result;
+	}
+	@GetMapping("/get2")
+	public List<SkripsiModel> get2(@RequestBody SkripsiModel skripsiModel){
+		var result = skripsiService.skripsiMengandungKata(skripsiModel);
+		return result;
+	}
+	@GetMapping("/get3")
+	public List<SkripsiModel> get3(@RequestBody SkripsiModel skripsiModel){
+		var result = skripsiService.skripsiTahunDanNilai(skripsiModel);
+		return result;
+	}
+	@GetMapping("/get4")
+	public List<SkripsiModel> get4(@RequestBody SkripsiModel skripsiModel){
+		var result = skripsiService.skripsiKecualiTahun(skripsiModel);
+		return result;
+	}
+	@GetMapping("/get5")
+	public List<SkripsiModel> get5(@RequestBody SkripsiModel skripsiModel){
+		var result = skripsiService.skripsiSelain(skripsiModel);
 		return result;
 	}
 }
