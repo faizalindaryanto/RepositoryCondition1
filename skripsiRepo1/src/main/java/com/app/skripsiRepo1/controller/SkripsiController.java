@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.skripsiRepo1.dto.SubSkripsiModel;
 import com.app.skripsiRepo1.model.SkripsiModel;
 import com.app.skripsiRepo1.service.ISkripsiService;
 import com.app.skripsiRepo1.service.impl.SkripsiService;
@@ -28,9 +30,9 @@ public class SkripsiController {
 		var result = skripsiService.skripsiLebihDariTahun(skripsiModel);
 		return result;
 	}
-	@GetMapping("/get2")
-	public List<SkripsiModel> get2(@RequestBody SkripsiModel skripsiModel){
-		var result = skripsiService.skripsiMengandungKata(skripsiModel);
+	@GetMapping("/get2/{judul}")
+	public List<SubSkripsiModel> get2(@PathVariable String judul){
+		var result = skripsiService.skripsiMengandungKata(judul);
 		return result;
 	}
 	@GetMapping("/get3")

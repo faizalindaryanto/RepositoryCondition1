@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.app.skripsiRepo1.dto.SubSkripsiModel;
 import com.app.skripsiRepo1.model.SkripsiModel;
 import com.app.skripsiRepo1.repository.ISkripsiRepository;
 
@@ -27,11 +28,11 @@ public class SkripsiRepository implements ISkripsiRepository {
 	}
 
 	@Override
-	public List<SkripsiModel> skripsiMengandungKata(SkripsiModel skripsiModel) {
+	public List<SubSkripsiModel> skripsiMengandungKata(String judul) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from skripsi_model where judul like '%?%'";
+		String query = "Select judul from skripsi_model where judul like '%"+ judul +"%'";
 		
-		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getJudul()});
+		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SubSkripsiModel.class));
 		return result;
 	}
 
@@ -55,8 +56,8 @@ public class SkripsiRepository implements ISkripsiRepository {
 	@Override
 	public List<SkripsiModel> skripsiSelain(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from skripsi_model where judul not like ''?'%' order by tahun desc";
-		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getJudul()});
+		String query = "Select judul from skripsi_model where judul not like '"+ skripsiModel.getJudul() +"%' order by tahun desc";
+		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class));
 		return result;
 	}
 
