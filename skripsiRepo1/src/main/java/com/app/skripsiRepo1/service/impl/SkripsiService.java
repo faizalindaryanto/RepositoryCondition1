@@ -24,7 +24,7 @@ public class SkripsiService implements ISkripsiService {
 	}
 
 	@Override
-	public List<SubSkripsiModel> skripsiMengandungKata(String judul) {
+	public List<SkripsiModel> skripsiMengandungKata(String judul) {
 		// TODO Auto-generated method stub
 		var result = skripsiRepository.skripsiMengandungKata(judul);
 		return result;

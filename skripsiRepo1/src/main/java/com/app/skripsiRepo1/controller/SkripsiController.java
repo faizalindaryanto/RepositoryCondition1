@@ -31,7 +31,7 @@ public class SkripsiController {
 		return result;
 	}
 	@GetMapping("/get2/{judul}")
-	public List<SubSkripsiModel> get2(@PathVariable String judul){
+	public List<SkripsiModel> get2(@PathVariable String judul){
 		var result = skripsiService.skripsiMengandungKata(judul);
 		return result;
 	}

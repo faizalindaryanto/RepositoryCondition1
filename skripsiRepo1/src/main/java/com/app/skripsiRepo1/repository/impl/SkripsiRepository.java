@@ -22,24 +22,24 @@ public class SkripsiRepository implements ISkripsiRepository {
 	public List<SkripsiModel> skripsiLebihDariTahun(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
 		
-		String query = "Select judul from skripsi_model where tahun <= ?";
+		String query = "Select * from skripsi_model where tahun <= ?";
 		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun()});
 		return result;
 	}
 
 	@Override
-	public List<SubSkripsiModel> skripsiMengandungKata(String judul) {
+	public List<SkripsiModel> skripsiMengandungKata(String judul) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from skripsi_model where judul like '%"+ judul +"%'";
+		String query = "Select * from skripsi_model where judul like '%"+ judul +"%'";
 		
-		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SubSkripsiModel.class));
+		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class));
 		return result;
 	}
 
 	@Override
 	public List<SkripsiModel> skripsiTahunDanNilai(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from skripsi_model where tahun = ? and nilai = ?";
+		String query = "Select * from skripsi_model where tahun = ? and nilai = ?";
 		
 		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun(), skripsiModel.getNilai()});
 		return result;
@@ -48,7 +48,7 @@ public class SkripsiRepository implements ISkripsiRepository {
 	@Override
 	public List<SkripsiModel> skripsiKecualiTahun(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from skripsi_model where tahun != ?";
+		String query = "Select * from skripsi_model where tahun != ?";
 		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class),new Object[] {skripsiModel.getTahun()});
 		return result;
 	}
@@ -56,7 +56,7 @@ public class SkripsiRepository implements ISkripsiRepository {
 	@Override
 	public List<SkripsiModel> skripsiSelain(SkripsiModel skripsiModel) {
 		// TODO Auto-generated method stub
-		String query = "Select judul from skripsi_model where judul not like '"+ skripsiModel.getJudul() +"%' order by tahun desc";
+		String query = "Select * from skripsi_model where judul not like '"+ skripsiModel.getJudul() +"%' order by tahun desc";
 		var result = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(SkripsiModel.class));
 		return result;
 	}

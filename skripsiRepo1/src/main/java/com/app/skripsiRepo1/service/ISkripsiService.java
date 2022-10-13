@@ -8,7 +8,7 @@ import com.app.skripsiRepo1.model.SkripsiModel;
 public interface ISkripsiService {
 	
 	public List<SkripsiModel> skripsiLebihDariTahun(SkripsiModel skripsiModel);
-	public List<SubSkripsiModel> skripsiMengandungKata(String judul);
+	public List<SkripsiModel> skripsiMengandungKata(String judul);
 	public List<SkripsiModel> skripsiTahunDanNilai(SkripsiModel skripsiModel);
 	public List<SkripsiModel> skripsiKecualiTahun(SkripsiModel skripsiModel);
 	public List<SkripsiModel> skripsiSelain(SkripsiModel skripsiModel);
